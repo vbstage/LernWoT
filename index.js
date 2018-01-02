@@ -1,4 +1,4 @@
-var wot = require('wotServer');
+var wot = require('./wot-server');
 
 // start wot server
-wot.init();
+wot.start();

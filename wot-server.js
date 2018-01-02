@@ -1,7 +1,14 @@
-var wotServer = {
-    init: function() {
-        console.log('server init');
+var wot = {
+    start: function() {
+
+        var httpServer = require('./servers/http'),
+            resources = require('./resources/model');
+
+        var server = httpServer.listen(resources.pi.port, function(){
+            console.info('Your WoT Pi is up and running on port %s',
+                resources.pi.port);
+        });
     }
 };
 
-module.export = wotServer;
+module.exports = wot;
