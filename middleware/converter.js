@@ -7,8 +7,8 @@ module.exports = function () {
         console.info('Representation converter middleware called');
 
         if (req.result) {
-            switch (req.accepts(['json', 'html', 'application/x-msgpack'])) {
-                case 'html':
+            switch (req.accepts(['application/json', 'application/html', 'application/x-msgpack'])) {
+                case 'application/html':
                     console.info('HTML representation selected!');
 
                     var transform = {'tag': 'div', 'html': '${name} : ${value}'};
