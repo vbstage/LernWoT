@@ -8,7 +8,7 @@ var app = express();
 
 app.use(cors());
 
-app.use(function(req, res, next){
+app.use(function(req, res, next) {
    var date = new Date();
    console.log( date.getHours() + ':' +
                 date.getMinutes() + ':' +
