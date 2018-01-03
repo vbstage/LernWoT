@@ -1,5 +1,6 @@
 var express = require('express'),
-    cors = require('cors');
+    cors = require('cors'),
+    bodyParser = require('body-parser');
 
 var actuatorsRoutes = require('./../routes/actuators'),
     sensorRoutes = require('./../routes/sensors'),
@@ -9,6 +10,7 @@ var actuatorsRoutes = require('./../routes/actuators'),
 
 var app = express();
 
+app.use(bodyParser.json());
 app.use(cors());
 
 app.use(function(req, res, next) {

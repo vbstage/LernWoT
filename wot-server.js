@@ -4,10 +4,11 @@ var wot = {
         var httpServer = require('./servers/http'),
             resources = require('./resources/model');
 
-        var //ledsPlugin = require('./plugins/internal/ledsPlugin'),
+        var ledsPlugin = require('./plugins/internal/ledsPlugin'),
             pirPlugin = require('./plugins/internal/pirPlugin'),
             dhtPlugin = require('./plugins/internal/DHT22SensorPlugin');
 
+        ledsPlugin.start({'simulate': false, 'frequency': 7000});
         pirPlugin.start({'simulate': true, 'frequency': 3000});
         dhtPlugin.start({'simulate': false, 'frequency': 5000});
 
