@@ -7,7 +7,7 @@ var model = resources.pi.sensors.pir;
 var pluginName = resources.pi.sensors.pir.name;
 
 var localParams = {
-    'simulate': false,
+    'simulate': true,
     'frequency': 2000
 };
 
@@ -48,8 +48,8 @@ function connectHardware() {
 }
 
 function simulate() {
-    interval = setInterval(function(){
-        model.value = !model.value;
+    interval = setInterval(function() {
+        model.value = !(model.value);
         showValue();
     }, localParams.frequency);
 
