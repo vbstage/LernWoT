@@ -1,5 +1,5 @@
 var msgpack = require('msgpack5')(),
-    encode = mspack.encode,
+    encode = msgpack.encode,
     json2html = require('node-json2html');
 
 module.exports = function() {
