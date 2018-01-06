@@ -8,8 +8,8 @@ exports.listen = function (server) {
 
     console.info('Websocket server started...');
 
-    wss.on('connection', function (ws) {
-        var url = ws.upgradeReq.url;
+    wss.on('connection', function (ws, req) {
+        var url = req.url;
 
         console.info(url);
 
