@@ -2,6 +2,7 @@ var wot = {
     run: function() {
 
         var httpServer = require('./servers/http'),
+            wsServer = require('./servers/websockets'),
             resources = require('./resources/model');
 
         var ledsPlugin = require('./plugins/internal/ledsPlugin'),
@@ -12,9 +13,11 @@ var wot = {
         pirPlugin.start({'simulate': true, 'frequency': 3000});
         dhtPlugin.start({'simulate': false, 'frequency': 5000});
 
-        var server = httpServer.listen(resources.pi.port, function(){
-            console.info('Your WoT Pi is up and running on port %s',
-                resources.pi.port);
+        var server = httpServer.listen(resources.pi.port, function() {
+           console.log('HTTP server started...');
+
+           wsServer.listen(server);
+           console.info('WoT Pi is up & running on port %s', resources.pi.port);
         });
     }
 };
