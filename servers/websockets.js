@@ -1,4 +1,5 @@
 var wsServer = require('ws').Server,
+    EventEmitter = require('events'),
     resources = require('./../resources/model');
 
 exports.listen = function (server) {
