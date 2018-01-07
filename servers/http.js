@@ -7,6 +7,7 @@ var actuatorsRoutes = require('./../routes/actuators'),
     resources = require('./../resources/model'),
     converter = require('./../middleware/converter');
 
+var thingsRoutes = require('./../routes/things');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use(function(req, res, next) {
 });
 app.use('/pi/actuators', actuatorsRoutes);
 app.use('/pi/sensors', sensorRoutes);
+app.use('/things', thingsRoutes);
 
 app.get('/pi', function(req, res) {
    res.send('This is the WoT-Pi');

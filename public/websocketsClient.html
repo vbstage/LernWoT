@@ -1,10 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
 <body>
+<script>
+    function subscribeToWs(url, msg) {
+        var socket = new WebSocket(url);
+
+        socket.onmessage = function (event) {
+            console.log(event);
+        };
+        socket.onerror = function (error) {
+            console.log('An error occurred while trying to connect to a Websocket!');
+            console.log(error);
+        };
+        socket.onopen = function (event) {
+            if (msg) {
+                socket.send(msg);
+            }
+        };
+    }
+
+    //subscribeToWs('ws://localhost:8484/pi/sensors/temperature');
+    //subscribeToWs('ws://localhost:8484/things/coapDevice/sensors/co2');
+    subscribeToWs('ws://192.168.1.7:8484/pi/sensors/pir');
+    //subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/temperature');
+    //subscribeToWs('ws://raspberrypi.local:8484/pi/sensors/humidity');
+    //subscribeToWs('ws://wot-pi.local:8484/pi/sensors/pir');
+</script>
+<!--<script>
+    var resources = {
+        "pi": {
+            "name": "WoT Pi",
+            "description": "WoT connected Raspberry Pi",
+            "port": 8484,
+            "sensors": {
+                "temperature": {
+                    "name": "Temperature Sensor",
+                    "description": "An ambient temperature sensor",
+                    "unit": "celsius",
+                    "value": 0,
+                    "gpio": 12
+                },
+                "humidity": {
+                    "name": "Humidity Sensor",
+                    "description": "An ambient humidity sensor",
+                    "unit": "%",
+                    "value": 0,
+                    "gpio": 12
+                },
+                "pir": {
+                    "name": "Passive Infrared",
+                    "description": "A passive infrared sensor. When 'true' someone is present",
+                    "value": true,
+                    "gpio": 17
+                }
+            },
+            "actuators": {
+                "leds": {
+                    "1": {
+                        "name": "LED 1",
+                        "value": false,
+                        "gpio": 4
+                    },
+                    "2": {
+                        "name": "LED 2",
+                        "value": false,
+                        "gpio": 9
+                    }
+                }
+            }
+        }
+    };
+
+    function selectResource(url) {
+        var parts = url.split('/');
+        parts.shift();
+
+        var result = resources;
+        for (var i = 0; i < parts.length; i++) {
+            result = result[parts[i]];
+        }
+
+        return result;
+    }
+
+    console.log(selectResource('localhost:8484/pi/sensors/temperature'));
+    console.log(selectResource('raspberrypi.local:8484/pi/sensors/humidity'));
+</script>-->
 
 </body>
 </html>

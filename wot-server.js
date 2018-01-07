@@ -5,6 +5,8 @@ var wot = {
             wsServer = require('./servers/websockets'),
             resources = require('./resources/model');
 
+
+
         var ledsPlugin = require('./plugins/internal/ledsPlugin'),
             pirPlugin = require('./plugins/internal/pirPlugin'),
             dhtPlugin = require('./plugins/internal/DHT22SensorPlugin');
@@ -12,6 +14,10 @@ var wot = {
         ledsPlugin.start({'simulate': false, 'frequency': 7000});
         pirPlugin.start({'simulate': true, 'frequency': 3000});
         dhtPlugin.start({'simulate': false, 'frequency': 5000});
+
+        var coapPlugin = require('./plugins/external/coapPlugin');
+
+        coapPlugin.start({simulate: false, 'frequency': 10000});
 
         var server = httpServer.listen(resources.pi.port, function() {
            console.log('HTTP server started...');
