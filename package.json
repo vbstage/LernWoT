@@ -25,11 +25,11 @@
   "homepage": "https://github.com/vbstage/LernWoT#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "coap": "^0.21.0",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "msgpack5": "^4.0.0",
     "node-json2html": "^1.1.1",
-    "soap": "^0.23.0",
     "ws": "^4.0.0"
   },
   "optionalDependencies": {
