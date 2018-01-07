@@ -1,4 +1,4 @@
-var soap = require('coap'),
+var coap = require('coap'),
     utils = require('./../utils/utils');
 
 var port = 5683;
